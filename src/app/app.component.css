@@ -1,0 +1,24 @@
+.compare-btn_border {
+  border: 1px solid lightgray;
+  box-sizing: border-box;
+  margin: 0 10px 10px 0;
+}
+
+.compare-btn_active,
+.winner-element_bg,
+.btn-add_bg {
+  color: white;
+}
+
+.compare-btn_active {
+  background-color: #80e8d9;
+  border-color: #80e8d9;
+}
+
+.winner-element_bg {
+  background-color: #48c774;
+}
+
+.btn-add_bg {
+  background-color: #00d1b2;
+}

@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <form class="col-12 mt-5">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              maxlength="1"
+              placeholder="New item"
+              [(ngModel)]="itemName"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <button
+              class="btn btn-add_bg"
+              id="basic-addon2"
+              (click)="addItem()"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="row">
+        <table class="table col-12">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Score</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items; let index = index">
+              <td>{{ item.name }}</td>
+              <td>{{ item.score }}</td>
+              <td>
+                <span *ngIf="index === 0" class="btn winner-element_bg"
+                  >Winner</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-6 mt-5">
+      <h2>Compare items</h2>
+      <div
+        class="form-check"
+        *ngFor="let item of compareItems; let index = index"
+      >
+        <input
+          type="radio"
+          [value]="item.compareItem1"
+          [name]="'btnradio' + index"
+          [id]="'btnradio1' + index"
+          [(ngModel)]="item.selected"
+          (ngModelChange)="countScore()"
+          style="display: none"
+        />
+        <label
+          class="btn compare-btn_border mr-2"
+          [class.compare-btn_active]="item.compareItem1 === item.selected"
+          [for]="'btnradio1' + index"
+          >{{ item.compareItem1 }}</label
+        >
+        <input
+          type="radio"
+          [value]="item.compareItem2"
+          [name]="'btnradio' + index"
+          [id]="'btnradio2' + index"
+          [(ngModel)]="item.selected"
+          (ngModelChange)="countScore()"
+          style="display: none"
+        />
+        <label
+          class="btn compare-btn_border"
+          [class.compare-btn_active]="item.compareItem2 === item.selected"
+          [for]="'btnradio2' + index"
+          >{{ item.compareItem2 }}</label
+        >
+      </div>
+    </div>
+  </div>
+</div>
